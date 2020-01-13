@@ -1,0 +1,20 @@
+.remove-btn {
+  margin-right: 1rem;
+}
+
+.fade-topic--enter {
+  opacity: 0.01;
+}
+
+.fade-topic--enter--active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.fade-topic--exit {
+  opacity: 1;
+}
+
+.fade-topic--exit--active {
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in;
+}
