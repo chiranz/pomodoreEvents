@@ -4,16 +4,21 @@ import "./App.css";
 
 import store from "./store";
 import { Provider } from "react-redux";
+import { Container } from "reactstrap";
 
 import NavBar from "./components/NavBar";
 import TopicList from "./components/TopicList";
+import ItemModal from "./components/TopicModal";
 
 function App() {
   return (
     <Provider store={store}>
       <div>
         <NavBar />
-        <TopicList />
+        <Container>
+          <ItemModal />
+          <TopicList />
+        </Container>
       </div>
     </Provider>
   );

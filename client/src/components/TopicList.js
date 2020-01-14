@@ -1,44 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import uuid from "uuid";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteItem, getItems } from "../actions/topicActions";
 
 export default function TopicList() {
-  const topics = useSelector(state => state.topics);
+  const topics = useSelector(state => state.topicReducer.topics);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getItems());
+  }, []);
+  function onDeleteClick(id) {
+    dispatch(deleteItem(id));
+  }
   return (
     <Container>
-      <Button
-        color="dark"
-        style={{ marginBottom: "2rem" }}
-        onClick={() => {
-          const name = prompt("Enter Topic");
-          if (name) {
-            const topic = {
-              id: uuid(),
-              weight: Math.floor(Math.random() * 20),
-              name,
-              createdAt: new Date()
-            };
-            return;
-          }
-        }}
-      >
-        Add Topic
-      </Button>
       <ListGroup>
         <TransitionGroup className="topic-list">
-          {topics.map(({ id, name, createdAt }) => (
-            <CSSTransition key={id} timeout={500} className="fade-topic">
+          {topics.map(({ _id, name, createdAt }) => (
+            <CSSTransition key={_id} timeout={500} className="fade-topic">
               <ListGroupItem>
                 <Button
                   className="remove-btn"
                   color="danger"
                   size="sm"
-                  onClick={() => {
-                    const newTopics = topics.filter(topic => topic.id !== id);
-                    console.log(newTopics);
-                  }}
+                  onClick={() => onDeleteClick(_id)}
                 >
                   &times;
                 </Button>
