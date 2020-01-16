@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require("../../middleware/auth");
 const router = express.Router();
 
 //  Topic Model
@@ -17,9 +18,9 @@ router.get("/", (_, res) => {
 });
 // @route Post api/topics
 // @route Post All topic
-// @access Public
+// @access Private
 
-router.post("/", (req, res) => {
+router.post("/", auth, (req, res) => {
   const newTopic = new Topic({ name: req.body.name });
   newTopic
     .save()
@@ -31,9 +32,9 @@ router.post("/", (req, res) => {
 
 // @route DELETE api/topics/:id
 // @route Delete a Topic
-// @access Public
+// @access Private
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth, (req, res) => {
   Topic.findById(req.params.id)
     .then(item => item.remove().then(() => res.json({ success: true })))
     .catch(() => res.status(404).json({ success: false }));
