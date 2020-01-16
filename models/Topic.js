@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-mongoose.set("useCreateIndex", true);
 Schema = mongoose.Schema;
 
 const TopicSchema = new Schema({
