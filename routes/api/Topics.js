@@ -6,11 +6,11 @@ const router = express.Router();
 const Topic = require("../../models/Topic");
 
 // @route GET api/items
-// @route GET All items
-// @access Public
+// @route GET All User items
+// @access Private
 
-router.get("/", (_, res) => {
-  Topic.find({})
+router.get("/", auth, (req, res) => {
+  Topic.find({ userId: req.user.id })
     .sort({ createdAt: -1 })
     .then(items => {
       res.json(items);
@@ -21,7 +21,8 @@ router.get("/", (_, res) => {
 // @access Private
 
 router.post("/", auth, (req, res) => {
-  const newTopic = new Topic({ name: req.body.name });
+  console.log(req.user);
+  const newTopic = new Topic({ name: req.body.name, userId: req.user.id });
   newTopic
     .save()
     .then(topic => res.json(topic))

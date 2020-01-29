@@ -4,15 +4,22 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteItem, getItems } from "../actions/topicActions";
 import AlertModal from "./AlertModal";
+import { Redirect } from "react-router-dom";
 
 export default function TopicList() {
   const topics = useSelector(state => state.topicReducer.topics);
+  const isAuthenticated = useSelector(
+    state => state.authReducer.isAuthenticated
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getItems());
   }, []);
   function onDeleteClick(id) {
     dispatch(deleteItem(id));
+  }
+  if (!isAuthenticated) {
+    return <Redirect to="/" />;
   }
   return (
     <Container>

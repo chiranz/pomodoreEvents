@@ -16,9 +16,14 @@ const TopicSchema = new Schema({
       type: Date
     }
   ],
-  weight: {
+  pomodoreCount: {
     type: Number,
-    default: 1
+    default: 0
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true
   }
 });
 

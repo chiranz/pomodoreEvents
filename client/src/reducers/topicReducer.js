@@ -2,7 +2,8 @@ import {
   GET_ITEMS,
   ADD_ITEM,
   DELETE_ITEM,
-  ITEMS_LOADING
+  ITEMS_LOADING,
+  CLEAR_ITEMS
 } from "../actions/types";
 
 const initialState = {
@@ -36,6 +37,8 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
+    case CLEAR_ITEMS:
+      return initialState;
     default:
       return state;
   }

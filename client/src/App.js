@@ -8,10 +8,10 @@ import { Provider } from "react-redux";
 import { Container } from "reactstrap";
 
 import NavBar from "./components/NavBar";
-import TopicList from "./components/TopicList";
-import ItemModal from "./components/TopicModal";
 import { loadUser } from "./actions/authActions";
 import LandingPage from "./components/LandingPage";
+import { PrivateRoute } from "./PrivateRoute";
+import TopicPage from "./pages/TopicPage";
 
 function App() {
   useEffect(() => {
@@ -25,10 +25,7 @@ function App() {
           <Container>
             <Switch>
               <Route exact path="/" component={LandingPage} />
-              <Route exact path="/topics">
-                <ItemModal />
-                <TopicList />
-              </Route>
+              <PrivateRoute exact path="/topics" component={TopicPage} />
             </Switch>
           </Container>
         </div>
