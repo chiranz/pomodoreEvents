@@ -18,3 +18,44 @@
   opacity: 0.01;
   transition: opacity 1000ms ease-in;
 }
+
+/* Landing Page Style */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+}
+
+.control-panels {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.pomodore-clock {
+  position: relative;
+}
+.pomodore-image {
+  position: relative;
+}
+.time-count {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.pomodore-control {
+  position: absolute;
+  top: 65%;
+  left: 35%;
+  font-size: 1.2rem;
+}

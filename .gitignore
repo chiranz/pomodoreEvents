@@ -5,7 +5,7 @@ config/
 /node_modules
 /.pnp
 .pnp.js
-
+todos.js
 # testing
 /coverage
 

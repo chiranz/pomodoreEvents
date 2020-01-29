@@ -1,0 +1,15 @@
+.clicker-button {
+  background-color: grey;
+  margin: 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  outline: none !important;
+}
+.clicker-button:active {
+  transform: scale(0.95);
+}
